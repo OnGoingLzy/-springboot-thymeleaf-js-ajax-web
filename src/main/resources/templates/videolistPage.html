@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>蟹黄video</title>
+    <link rel="stylesheet" th:href="@{css/font-awesome.css}"/> <!-- Font-Awesome-Icons-CSS -->
+    <link rel="stylesheet" th:href="@{css/login.css}" type="text/css" media="all"/> <!-- Style-CSS -->
+    <link rel="stylesheet" th:href="@{css/pagebutton.css}" type="text/css" media="all"/> <!-- Style-CSS -->
+</head>
+<body class="background">
+<h2 style="color: cornsilk">视频列表</h2>
+<div>
+    <form action="/selectVideo">
+        <input name="selectName" placeholder="输入威丢的名字=v=" type="text">
+        <input hidden name="pageNow" value="1">
+        <select name="selectTag">
+            <option th:each="tag:${tagall}" value="${tag}">[[ ${tag} ]]</option>
+<!--            <option value="搞笑">搞笑</option>-->
+<!--            <option value="伤感">伤感</option>-->
+<!--            <option value="恐怖">恐怖</option>-->
+<!--            <option value="黑丝">黑丝</option>-->
+        </select>
+        <input type="submit" value="搜索">
+    </form>
+</div>
+
+<!--搜索视频页面按钮-->
+<div class="green-black" th:if="${pd} eq 1">
+    <ul >
+        <!-- 首页 -->
+        <li>
+            <a th:href="'/selectVideo?selectName=' + ${videoName} + '&selectTag=' + ${videoTag} + '&pageNow=1'">首页</a>
+        </li>
+
+        <li th:if="${pageNow} gt 1" >
+            <a th:href="'/selectVideo?selectName=' + ${videoName} + '&selectTag=' + ${videoTag} + '&pageNow=' + ${pageNow-1}" th:text="上一页"></a>
+        </li>
+        <!--中间页面--为了实现...显示左右3页-->
+        <li th:each="i:${#numbers.sequence(pageNow-3,pageNow+3)}">
+            <span class="current" th:if="${i} eq ${pageNow}">[[ ${pageNow} ]]</span>
+            <a th:href="'/selectVideo?selectName=' + ${videoName} + '&selectTag=' + ${videoTag} + '&pageNow=' + ${i}" th:text="${i}" th:if="${i} ge 1 and ${i} le ${page} and ${i} ne ${pageNow}"></a>
+        </li>
+
+        <!-- 下一页 -->
+        <li th:if="${pageNow} lt ${page}">
+            <a th:href="'/selectVideo?selectName=' + ${videoName} + '&selectTag=' + ${videoTag} + '&pageNow=' + ${pageNow+1}" th:text="下一页"></a>
+        </li>
+
+        <!-- 尾页 -->
+        <li>
+            <a th:href="'/selectVideo?selectName=' + ${videoName} + '&selectTag=' + ${videoTag} + '&pageNow=' + ${page}">尾页</a>
+        </li>
+
+    </ul>
+</div>
+
+<!--分页按钮 一页放的视频数量可以去shipinservice里面更改-->
+<div class="green-black" th:if="${pd} ne 1">
+    <ul >
+        <!-- 首页 -->
+        <li>
+            <a th:href="'/videoListPage?pageNow=1'">首页</a>
+        </li>
+
+        <!-- 上一页
+        1 gt:     great than（大于）>
+        2 ge：    great equal（大于等于）>=
+        3 eq：    equal（等于）==
+        4 lt：    less than（小于）<
+        5 le：    less equal（小于等于）<=
+        6 ne：    not equal（不等于）!=
+        变量page是总页数 pagenow是当前页数
+        -->
+        <li th:if="${pageNow} gt 1" >
+            <a th:href="'/videoListPage?pageNow=' + ${pageNow-1}" th:text="上一页"></a>
+        </li>
+        <!--中间页面--为了实现...显示左右3页-->
+        <li th:each="i:${#numbers.sequence(pageNow-3,pageNow+3)}">
+            <span class="current" th:if="${i} eq ${pageNow}">[[ ${pageNow} ]]</span>
+            <a th:href="'/videoListPage?pageNow=' + ${i}" th:text="${i}" th:if="${i} ge 1 and ${i} le ${page} and ${i} ne ${pageNow}"></a>
+        </li>
+
+        <!-- 下一页 -->
+        <li th:if="${pageNow} lt ${page}">
+            <a th:href="'/videoListPage?pageNow=' + ${pageNow+1}" th:text="下一页"></a>
+        </li>
+
+        <!-- 尾页 -->
+        <li>
+            <a th:href="'/video?pageNow=' + ${page}">尾页</a>
+        </li>
+
+    </ul>
+</div>
+<!--preload-->
+<!--默认情况下我们实现一个简单的 H5 的播放器，只需要这么简单的代码就好：-->
+<!--这个时候用户点击播放按钮就可以开始播放了。-->
+<!--但是为了更好的用户体验，我们有的时候需要预加载视频，比如有的视频可能是在用户产生某些交互进行显示播放的。这个时候我们优先想到的是 preload 属性。-->
+<!--此属性用于定义视频是否预加载。属性有三个可选择的值：none、metadata、auto。如果不使用此属性，默认为auto。-->
+<!--None：不进行预加载。使用此属性值，可能是页面制作者认为用户不期望此视频，或者减少HTTP请求。-->
+<!--Metadata：部分预加载。使用此属性值，代表页面制作者认为用户不期望此视频，但为用户提供一些元数据(包括尺寸，第一帧，曲目列表，持续时间等等)。-->
+<!--Auto：全部预加载-->
+<div>
+    <ul>
+        <li th:each="shipinlist:${list}">
+            <!--          video后添加可自动播放  controls autoplay -->
+            <video width="320" height="240" preload="metadata" controls="" x5-playsinline="" playsinline="" webkit-playsinline="" poster="">
+                <source th:src="${path1}+${shipinlist.name}" type="video/mp4">
+                <source th:src="${path1}+${shipinlist.name}" type="video/flv">
+                <source th:src="${path1}+${shipinlist.name}" type="video/avi">
+                <source th:src="${path1}+${shipinlist.name}" type="video/wmv">
+                <source th:src="${path1}+${shipinlist.name}" type="video/mpg">
+                <source th:src="${path1}+${shipinlist.name}" type="video/rmvb">
+                <source th:src="${path1}+${shipinlist.name}" type="video/">
+                <!--                 <source src="test.mp3" type="audio/mpeg">-->
+                <!--                 <source src="test.wav" type="audio/wav">-->
+                <!--                 您的浏览器不支持音频播放-->
+            </video>
+            <p style="color: cornsilk">名称:<span th:text="${shipinlist.title}"></span></p>
+            <p style="color: darkgray">分类:<span th:text="${shipinlist.tag}"></span></p>
+        </li>
+    </ul>
+</div>
+
+<div class="green-black" th:if="${pd} ne 1">
+    <ul >
+        <!-- 首页 -->
+        <li>
+            <a th:href="'/videoListPage?pageNow=1'">首页</a>
+        </li>
+
+        <li th:if="${pageNow} gt 1" >
+            <a th:href="'/videoListPage?pageNow=' + ${pageNow-1}" th:text="上一页"></a>
+        </li>
+<!--中间页面--为了实现...显示左右3页-->
+        <li th:each="i:${#numbers.sequence(pageNow-3,pageNow+3)}">
+            <span class="current" th:if="${i} eq ${pageNow}">[[ ${pageNow} ]]</span>
+            <a th:href="'/videoListPage?pageNow=' + ${i}" th:text="${i}" th:if="${i} ge 1 and ${i} le ${page} and ${i} ne ${pageNow}"></a>
+        </li>
+
+        <!-- 下一页 -->
+        <li th:if="${pageNow} lt ${page}">
+            <a th:href="'/videoListPage?pageNow=' + ${pageNow+1}" th:text="下一页"></a>
+        </li>
+
+        <!-- 尾页 -->
+        <li>
+            <a th:href="'/video?pageNow=' + ${page}">尾页</a>
+        </li>
+
+    </ul>
+</div>
+
+<!--搜索视频页面按钮-->
+<div class="green-black" th:if="${pd} eq 1">
+    <ul >
+        <!-- 首页 -->
+        <li>
+            <a th:href="'/selectVideo?selectName=' + ${videoName} + '&selectTag=' + ${videoTag} + '&pageNow=1'">首页</a>
+        </li>
+
+        <li th:if="${pageNow} gt 1" >
+            <a th:href="'/selectVideo?selectName=' + ${videoName} + '&selectTag=' + ${videoTag} + '&pageNow=' + ${pageNow-1}" th:text="上一页"></a>
+        </li>
+        <!--中间页面--为了实现...显示左右3页-->
+        <li th:each="i:${#numbers.sequence(pageNow-3,pageNow+3)}">
+            <span class="current" th:if="${i} eq ${pageNow}">[[ ${pageNow} ]]</span>
+            <a th:href="'/selectVideo?selectName=' + ${videoName} + '&selectTag=' + ${videoTag} + '&pageNow=' + ${i}" th:text="${i}" th:if="${i} ge 1 and ${i} le ${page} and ${i} ne ${pageNow}"></a>
+        </li>
+
+        <!-- 下一页 -->
+        <li th:if="${pageNow} lt ${page}">
+            <a th:href="'/selectVideo?selectName=' + ${videoName} + '&selectTag=' + ${videoTag} + '&pageNow=' + ${pageNow+1}" th:text="下一页"></a>
+        </li>
+
+        <!-- 尾页 -->
+        <li>
+            <a th:href="'/selectVideo?selectName=' + ${videoName} + '&selectTag=' + ${videoTag} + '&pageNow=' + ${page}">尾页</a>
+        </li>
+
+    </ul>
+</div>
+
+</body>
+
+</html>

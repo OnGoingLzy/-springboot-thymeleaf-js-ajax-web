@@ -1,0 +1,262 @@
+.upload-menu{
+    padding: 8px;
+    width: 200px;
+    height: 650px;
+    background-color: #120826;
+    float: left;
+}
+.upload-menu-ul{
+}
+.upload-menu-ul li{
+    margin-top: 15px;
+    height: 50px;
+}
+.upload-menu-title{
+    display: inline-flex;
+    align-items: center;
+    position: relative; /*这三个使得div中元素能垂直居中*/
+
+    width: 100%;
+    height: 50px;
+}
+.upload-menu-title h2{
+    left: 28%; /*使其在div中水平居中*/
+    position: relative;
+    font-size: 150%;
+    color: white;
+}
+.upload-menu-ul-div{
+    background-color: #210e42;
+    border-radius: 40px;
+    height: 100%;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+.upload-menu-ul div:hover{
+    border-radius: 40px;
+    background-color: #3b498d;
+    border: 1px solid #f3f4f8;
+    z-index: 9999;
+}
+.upload-menu-ul span{
+    position: relative;
+    left: 70px;
+    color: white;
+    font-size: 100%;
+}
+.upload-rightdiv{
+    text-align: center;
+    width: 60%;
+    min-height: 600px;
+    height: auto;
+    margin: 0 auto;
+    margin-left: 250px;
+    margin-top: 50px;
+    box-sizing: border-box;
+    font-family: PingFangSC-Regular,Microsoft YaHei,Arial,Helvetica,sans-serif;
+    border: 1px solid #eee;
+    position: relative;
+    opacity: 1;
+    background: #120826;
+
+}
+.upload-container{
+    background: url("../image/banner.png") no-repeat center;
+    float: right;
+    width: 100%;
+    box-shadow: 0 0 0 1px #eee;
+    height: auto;
+}
+.upload-video{
+    display: inline-block;
+    float: right;
+    opacity: 1;
+}
+.upload-title-container1{
+    margin-top: 5px ;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 150px;
+
+}
+.upload-title-container2{
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 50px;
+}
+.upload-title-container3{
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 50px;
+}
+.upload-title{
+    float: left;
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+    width: 134px;
+}
+.upload-title span{
+    display: inline-block;
+    position: relative;
+    color: cornsilk;
+    font-weight: 5;
+    text-align: center;
+    vertical-align:center;
+    left: 20px;
+}
+.upload-name-text{
+    background-color: #05172b;
+    color: white;
+    float: left;
+    text-align: center;
+    margin: 5px;
+    width: 70%;
+    height: 60%;
+}
+.upload-selectTag{
+    background-color: #05172b;
+    color: white;
+    margin: 5px;
+    float: left;
+    text-align: center;
+    width: 150px;
+    height: 60%;
+    margin-left: 22%;
+}
+.upload-surfaceImage{
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    left: 20%;
+    width: 195px;
+    height: 145px;
+    background: #05172b;
+    border-radius: 4px;
+    border: 1px dashed silver;
+
+}
+#content{border: 1px solid saddlebrown;padding: 16px;border-radius: 2px}
+.upload-choicevideo {
+    margin: 5px;
+    float: left;
+    top: 15px;
+    width: 140px;
+    height: 40px;
+    border:1px solid #b3dcff;
+    display:inline-block;border-radius: 2px;
+    position: relative;
+    line-height: 40px;
+    background-color: #0082E6;
+    left: 23%;
+}
+.upload-choicevideo:hover{
+    float: left;
+    top: 15px;
+    width: 140px;
+    height: 40px;
+    border:1px solid #c7ffb3;
+    display:inline-block;border-radius: 2px;
+    position: relative;
+    line-height: 40px;
+    background-color: #6be600;
+}
+.files{
+    float: left;
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    margin-left: -70px;
+/*    -40是让文件按钮和span重叠*/
+
+}
+.upload-choicevideo span{
+    display: inline-block;
+    position: relative;
+    color: cornsilk;
+    font-weight: 5;
+    text-align: center;
+    vertical-align:center;
+}
+video{
+    margin-top: 8px;
+    border-radius: 4px;
+}
+.upload-buttonlistdiv{
+    height: 200px;
+}
+.upload-buttonlistdiv-p{
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 50px;
+
+}
+.upload-buttonlistdiv-p input{
+    float: left;
+    margin: 2px;
+    width: 36px;
+    height: 28px;
+    background-color: #25a025;
+}
+.upload-showFieInfo{
+    margin: 5px;
+    width: 70%;
+    text-align: center;
+    float: left;
+}
+.upload-showFieInfo p{
+    font-weight: 15;
+    float: left;
+    color: white;
+}
+.upload-buttonlistdiv-p a{
+    cursor: pointer;
+    position: relative;
+    color: #fff;
+    font-size: 14px;
+    float: left;
+    margin-left: 20px;
+    width: 60px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #7b72fb;
+    border-radius: 2px;
+    left: 23%;
+}
+.upload-bar {
+    width: 70%;
+    height: 80px;
+    float: left;
+}
+.upload-bar p{
+    float: left;
+    text-align: center;
+    font-weight: 15;
+    color: white;
+}
+.upload-bar span{
+    font-weight: 15;
+    color: white;
+}
+.upload-bar progress{
+    height: 1em;
+    width: 20em;
+}

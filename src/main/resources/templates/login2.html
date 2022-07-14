@@ -1,0 +1,40 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>登录页面</title>
+    <link rel="stylesheet" th:href="@{css/font-awesome.css}"/> <!-- Font-Awesome-Icons-CSS -->
+    <link rel="stylesheet" th:href="@{css/login.css}" type="text/css" media="all"/> <!-- Style-CSS -->
+
+</head>
+<body class="background">
+    <div class="header-w3l">
+        <h1>蟹黄社区登录</h1>
+    </div >
+    <div class="main-content-agile">
+        <div class="sub-main-w3">
+        <h2>登录</h2>
+            <form th:action="@{userLogin}" >
+                <p style="color: crimson" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+
+                <!--如果msg为空则不显示-->
+                <div class="icon1">
+                    <input placeholder="用户名" name="account" type="text"/>
+                </div>
+
+                <div class="icon2">
+                    <input placeholder="密码" name="password" type="password"/>
+                </div>
+
+                <div class="clear"></div>
+                <input type="submit" name="submit">
+                <a th:href="@{register}"> <input type="button" value="register" /> </a>
+
+            </form>
+        </div>
+</div>
+    <div class="footer">
+        <p> 版权所有Copyright 2020-2020  All Rights Reserved</p>
+    </div>
+</body>
+</html>
+

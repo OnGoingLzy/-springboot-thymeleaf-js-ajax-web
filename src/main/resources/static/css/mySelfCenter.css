@@ -1,0 +1,612 @@
+.myself-personal-background{
+
+    height: 200px;
+
+    width: 100%;
+}
+.mySelf-background{
+    background: url("../image/banner.png") no-repeat center;
+    width: 100%;
+    background-size: cover;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+.mySelf-div-person{
+    margin-left: 20px;
+    padding-bottom: 16px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    bottom: -110px;
+    opacity: 1;
+}
+.mySelf-div-person-basic{
+    height: 50px;
+    width: 600px;
+    color: #fff;
+    font-size: 0;
+    margin-left: 5px;
+}
+.mySelf-div-person-basic div{
+    height: 20px;
+    width: 600px;
+    color: #fff;
+    font-size: 0;
+    margin-left: 5px;
+}
+.mySelf-userName {
+    display: inline-block;
+    margin-right: 5px;
+    font-weight: 600;
+    line-height: 18px;
+    font-size: 18px;
+    vertical-align: middle;
+    float: left;
+}
+.mySelf-div{
+    margin-left: 30px;
+    margin-right: 30px;
+    position: relative;
+    height: 66px;
+    background: #120826;
+    box-shadow: 0 0 0 1px #eee;
+    border-radius: 4px 4px 0 0;
+    padding: 0 20px;
+    font-size: 0;
+}
+.mySelf-divbox{
+    margin-top: 10px;
+    margin-right: 30px;
+    min-height: 660px;
+}
+.mySelf-headPortrait {
+    position: relative;
+    float: left;
+    width: 64px;
+    height: 64px;
+    border: 2px solid hsla(0,0%,100%,.4);
+    border-radius: 52px;
+}
+.mySelf-headPortrait-cover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 64px;
+    height: 64px;
+    background: rgba(0,0,0,.6);
+    font-size: 12px;
+    color: #fff;
+    line-height: 64px;
+    text-align: center;
+    opacity: 0;
+    border-radius: 50%;
+    transition: opacity .2s;
+}
+#h-avatar{
+    width: 64px;
+    height: 64px;
+    background: #fff;
+    border-radius: 48PX;
+}
+.mySelf-headPortrait2 {
+    position: relative;
+    float: left;
+    width: 36px;
+    height: 36px;
+    border: 2px solid hsla(0,0%,100%,.4);
+    border-radius: 52px;
+    bottom: -10px;
+}
+#h-avatar2{
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border-radius: 30PX;
+}
+.mySelf-headPortrait-cover2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    background: rgba(0,0,0,.6);
+    font-size: 12px;
+    color: #fff;
+    line-height: 36px;
+    text-align: center;
+    opacity: 0;
+    border-radius: 50%;
+    transition: opacity .2s;
+}
+
+.mySelf-other-headPortrait {
+    position: relative;
+    float: left;
+    width: 36px;
+    height: 36px;
+    border: 2px solid hsla(0,0%,100%,.4);
+    border-radius: 52px;
+}
+.mySelf-other-headPortrait-cover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    background: rgba(0,0,0,.6);
+    font-size: 12px;
+    color: #fff;
+    line-height: 36px;
+    text-align: center;
+    opacity: 0;
+    border-radius: 50%;
+    transition: opacity .2s;
+    box-sizing: border-box;
+}
+#h-avatar3{
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border-radius: 30PX;
+}
+.mySelf-div-litdiv{
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 13PX;
+    width: 70PX;
+    line-height: 66px;
+    margin-right: 16px;
+    position: relative;
+    z-index: 100;
+}
+/*.mySelf-div-litdiv:hover{*/
+/*    display: inline-block;*/
+/*    font-size: 13PX;*/
+/*    background-color: #1f1140;*/
+/*    width: 70PX;*/
+/*    line-height: 66px;*/
+/*    margin-right: 16px;*/
+/*    position: relative;*/
+/*}*/
+.mySelf-div-litdiv span{
+    z-index: 9999;
+    display: inline-block;
+    position: relative;
+    color: cornsilk;
+    font-weight: 5;
+    text-align: center;
+    vertical-align:center;
+}
+.mySelf-div-litdiv a{
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    vertical-align:center;
+}
+.mySelf-div-litdiv span:hover{
+    color: #ffffff;
+}
+#selfSign {
+    background: transparent;
+    border-radius: 4px;
+    border: none;
+    box-shadow: none;
+    color: hsla(0,0%,100%,.8);
+    font-size: 12px;
+    font-family: Microsoft Yahei;
+    line-height: 26px;
+    height: 26px;
+    margin-left: -5px;
+    padding: 0 5px;
+    position: relative;
+    top: -1px;
+    width: 500px;
+}
+.mySelf-div-person-basic-signtop{
+    width: 400px;
+    margin-top: 6px;
+}
+#selfSign:hover{
+    background-color: white;
+    color: black;
+    opacity: 0.7;
+}
+
+.col-1{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: #120826;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    float: left;
+    padding: 15px 20px;
+    width: 60%;
+    position: relative;
+    height: 90%;
+    overflow:auto;
+}
+.col-2{
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 300px;
+    position: relative;
+    width: 30%;
+    height: 90%;
+    float: right;
+}
+.mySelf-myVideoDiv{
+    overflow:hidden;
+    border-top: 1px solid cornsilk;
+    margin-top: 20px;
+    width: 100%;
+    min-height: 200px;
+}
+.mySelf-video-div{
+    float: left;
+    width: 30%;
+    height: 190px;
+    margin: 1px;
+    padding: 2px;
+}
+.mySelf-video-div span{
+    float: left;
+    width: 100%;
+    height: 20px;
+    font-size: 13PX;
+    line-height: 20px;
+    color: white;
+}
+.mySelf-video-div-div2{
+    width: 100%;
+    height: 20px;
+}
+.mySelf-video-div video{
+    margin:0 auto;
+    width: 90%;
+    height: 150px;
+}
+.mySelf-video-a{
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 13PX;//字体是否存在
+    width: 100px;
+    line-height: 20px;
+    margin-right: 1px;
+    position: relative;
+}
+.mySelf-video-a span:hover{
+    color: dodgerblue;
+}
+
+.mySelf-video-a span{
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+.mySelf-shenhevideo-div{
+    border-radius: 4px;
+    border: 1px dashed silver;
+    float: left;
+    width: 200px;
+    min-height: 100px;
+    margin: 10px;
+    padding: 20px;
+    overflow: hidden;
+}
+.mySelf-shenhevideo-div-div2{
+    margin: 5px;
+    overflow: hidden;
+    width: 90%;
+    height: auto;
+}
+.mySelf-shenhevideo-div-button2{
+    width: 50%;
+    height: 30px;
+    display:inline;
+}
+.mySelf-shenhevideo-div-button2pass{
+    width: 50%;
+    height: 30px;
+    display:inline;
+}
+
+.mySelf-shenhevideo-div span{
+    float: left;
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 13PX;//字体是否存在
+    width: 100px;
+    height: auto;
+    color: white;
+}
+.mySelf-shenhevideo-div a{
+
+    text-align: center;
+    color: #fff;
+    line-height: 30px;
+    width: 60px;
+    background: cornflowerblue;
+    margin-left: 12%;
+    /*display: inline-block;*/
+    float: left;
+    text-align: center;
+    font-size: 10px;
+    border-radius: 4px;
+}
+.mySelf-shenhevideo-div-button2pass a{
+    text-align: center;
+    color: #fff;
+    line-height: 30px;
+    width: 60px;
+    background: crimson;
+    margin-left: 12%;
+    /*display: inline-block;*/
+    float: left;
+    text-align: center;
+    font-size: 10px;
+    border-radius: 4px;
+}
+.mySelf-shenhevideo-div-button2pass a:hover{
+    background: greenyellow;
+}
+.mySelf-shenhevideo-div-button2 a:hover{
+    background: #ed6479;
+}
+.mySelf-myFolder{
+    border-radius: 4px;
+    border: 1px dashed silver;
+    float: left;
+    width: 100px;
+    min-height: 100px;
+    margin: 10px;
+    padding: 10px;
+    overflow: hidden;
+    display: table-cell;
+    font-size: 13px;
+    text-align: center;
+}
+.mySelf-myFolder span{
+    color: white;
+    display: inline-block;
+    position: relative;
+    font-weight: 5;
+    width: 100px;
+    height: auto;
+}
+.mySelf-myFolder a{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-align: center;
+    display: inline-block;
+}
+.mySelf-myFolder img{
+    height: 100px;
+}
+.mySelf-leaveword-div{
+    border-radius: 4px;
+    border: 1px dashed silver;
+    float: left;
+    width: 90%;
+    min-height: 80px;
+    margin: 10px;
+    padding: 10px;
+    overflow: hidden;
+}
+.mySelf-leaveword-div-namediv{
+    width: 200px;
+    height: 30px;
+    margin: 3px;
+    box-sizing: border-box;
+    float: left;
+}
+.mySelf-other-userName{
+    display: inline-block;
+    margin: 6px;
+    line-height: 18px;
+    font-size: 15px;
+    vertical-align: middle;
+    float: left;
+    color: #ef5555;
+    font-weight: bold;
+
+}
+.mySelf-leaveword-div-content{
+    width: 90%;
+    float: right;
+    min-height: 30px;
+    overflow: hidden;
+}
+.mySelf-leaveword-div-content span{
+    text-align: center;
+    vertical-align: middle;
+    color: darkgrey;
+    font-size: 15px;
+}
+
+.mySelf-leaveword-sendleaveword{
+    border-radius: 6px;
+    border: 2px silver;
+    float: left;
+    width: 90%;
+    background: #2f464f;
+    min-height: 100px;
+    margin: 10px;
+    padding: 10px;
+    overflow: hidden;
+}
+.mySelf-leaveword-sendleaveword-litdiv{
+    width: 100%;
+    height: 20px;
+    float: left;
+}
+.mySelf-leaveword-sendleaveword-litdiv span{
+    height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    color: #b9b3d2;
+    font-size: 15px;
+    float: left;
+}
+.mySelf-leaveword-sendleaveword textarea{
+    width: 80%;
+    min-height: 60px;
+    font-size: 15px;
+    overflow: hidden;
+    background: transparent;
+
+}
+.mySelf-leaveword-sendleaveword textarea:hover{
+    border: 2px dashed #000000;
+}
+.mySelf-leaveword-sendleaveword-button{
+    margin-left: 10px;
+    cursor: pointer;
+    position: relative;
+    color: #fff;
+    font-size: 14px;
+    float: right;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background: #5952ba;
+    border-radius: 8px;
+    margin-left: 14px;
+    display: inline-block;
+}
+.coverall{
+    z-index: 1000;
+    /*权重，用于遮挡优先级低的元素*/
+    border: none;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    /*background-color: rgb(0, 0, 0);*/
+    opacity: 1;
+    /*cursor: wait;*/
+    /*鼠标指针显示成加载状态*/
+    position: fixed;
+}
+.newFolder-Div{
+    opacity: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    /*    使其居中*/
+    border-radius: 4px;
+    background: #fff;
+    width: 450px;
+    height: 500px;
+}
+.newFolder-Div-head{
+    font-size: 16px;
+    color: #000;
+    height: 50px;
+    border-bottom: 1px solid #e5e9ef;
+    text-align: center;
+    position: relative;
+    line-height: 50px;
+}
+.newFolder-Div-name{
+    display: block;
+    width: 374px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    padding: 0 12px;
+    border-radius: 2px;
+    border: 1px solid #ccd0d7;
+    margin-top: 8px;
+    cursor: auto;
+}
+.newFolder-Div-submit{
+    width: 65px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #00a1d6;
+    text-align: center;
+    border-radius: 2px;
+    margin: 8px auto 0;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.newFolder-Div-submit a{
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    vertical-align: center;
+    top: -30PX;
+}
+.newFolder-Div-error{
+    opacity: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    /*    使其居中*/
+    border-radius: 4px;
+    width: 160px;
+    height: 45px;
+    background: #323232;
+    color: white;
+    text-align: center;
+    line-height: 45px;
+    font-size: 15px;
+    z-index: 9999;
+}
+.newFolder-Div-edit-info-warp{
+    position: relative;
+    margin-top: 16px;
+}
+.newFolder-Div-edit-info{
+    padding: 0 23px;
+}
+.name-num-limit{
+    position: absolute;
+    right: 12px;
+    bottom: 6px;
+    font-size: 12px;
+    color: #99a2aa;
+}
+.icon-close{
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 18px;
+    top: 16px;
+    background-image: url(//s1.hdslb.com/bfs/static/jinkela/space/assets/icons.0ac1300.png);
+    background-position: -135px -532px;
+    cursor: pointer;
+}
+
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+    width:12px;
+}
+/* 滚动槽 */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: cornsilk;
+    border-radius:10px;
+}
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+    border-radius:10px;
+    background:rgba(0,0,0,0.1);
+    -webkit-box-shadow: cornsilk;
+}

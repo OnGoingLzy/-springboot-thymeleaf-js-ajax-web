@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <div th:text="${msg}">[[${msg}]]</div>
+    <div th:utext="${msg}"></div>
+
+<h3 th:each="user:${users}" th:text="${user}"></h3>
+    <h3 th:each="user:${users}" >[[ ${user} ]]</h3>
+    <p id="demo">一个段落</p>
+    <button type="button" onclick="myFunction()">尝试一下</button>
+
+
+    <form method="post" enctype="multipart/form-data">
+        单文件上传：<input type="file" id="fileUp">
+    </form>
+
+    <form method="post" enctype="multipart/form-data">
+        多文件上传：<input type="file" id="fileUps" multiple>
+    </form>
+
+    <script type="text/javascript">
+        function myFunction()
+        {
+            document.getElementById("demo").innerHTML="我的第一个 JavaScript 函数";
+        }
+
+        $(function () {
+            //单文件上传
+            $("#fileUp").on("change", function () {
+                //$(this)[0] 等价于 $(this).get(0)，将 JQuery 对象转为 DOM 对象，files 为其属性，得到的是一个文件对象数组
+                var files = $(this)[0].files;
+                if(files.length>0){//未选中文件时，长度为0
+                    var file = files[0];//因为是单文件上传，所以只有一个文件（File）对象
+                    console.log(file);//下面所有的属性都可以从此对象的输出得到
+                    console.log("文件名称：" + file.name + ",文件大小：" + file.size + "字节,文件类型："
+                        + file.type + ",上次修改时间：" + file.lastModifiedDate);
+                    document.getElementById("demo").innerHTML="这个文件名叫:"+file.name;
+                }
+            });
+
+            //多文件上传
+            $("#fileUps").on("change", function () {
+                //$(this)[0] 等价于 $(this).get(0)，将 JQuery 对象转为 DOM 对象，files 为其属性，得到的是一个文件数组
+                var files = $(this).get(0).files;
+                for (var i = 0; i < files.length; i++) {
+                    console.log((i + 1) + "：文件名称：" + files[i].name + ",文件大小：" + files[i].size + "字节,文件类型："
+                        + files[i].type + ",上次修改时间：" + files[i].lastModifiedDate);
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>蟹黄video</title>
+    <link rel="stylesheet" th:href="@{css/font-awesome.css}"/> <!-- Font-Awesome-Icons-CSS -->
+    <link rel="stylesheet" th:href="@{css/login.css}" type="text/css" media="all"/> <!-- Style-CSS -->
+</head>
+<body class="background">
+<h2 style="color: cornsilk">视频列表</h2>
+<div>
+    <ul>
+        <li th:each="Shipin:${Shipins}">
+<!--          video后添加可自动播放  controls autoplay -->
+             <video width="320" preload="none" height="240" controls="" x5-playsinline="" playsinline="" webkit-playsinline="" poster="">
+                 <source th:src="${path1}+${Shipin.name}" type="video/mp4">
+<!--                 <source src="test.ogg" type="audio/ogg">-->
+<!--                 <source src="test.mp3" type="audio/mpeg">-->
+<!--                 <source src="test.wav" type="audio/wav">-->
+<!--                 您的浏览器不支持音频播放-->
+             </video>
+             <p style="color: cornsilk">Name:<span th:text="${Shipin.name}"></span></p>
+             <p style="color: darkgray">视频url======<span th:text="${Shipin.url}"></span></p>
+        </li>
+
+<!--        <li th:each="Shipinpath:${ShipinsPath}">-->
+<!--            <video width="320" height="240" controls autoplay>-->
+<!--                <source th:src="${Shipinpath}" type="video/mp4">-->
+<!--            </video>-->
+<!--        </li>-->
+
+    </ul>
+</div>
+</body>
+</html>

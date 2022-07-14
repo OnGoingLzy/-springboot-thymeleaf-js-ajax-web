@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>蟹黄社区-[[${otherName}]]的空间</title>
+    <link rel="stylesheet" th:href="@{css/layui.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/mySelfCenter.css}">
+    <script src="/js/mySelfjs.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <style>
+        .logo img {
+            width: 240px;
+            height: 46px;
+        }
+    </style>
+</head>
+
+<body class="mySelf-background">
+<div class="layui-header header header-index">
+    <div class="layui-main">
+        <a class="logo" href="/index">
+            <img src="/picture/LOGO2.png" alt="">
+        </a>
+        <ul style="float: right;" class="layui-nav" height="50px">
+            <li class="layui-nav-item layui-hide-xs">
+                <a th:href="@{mySelf}" target="_top" >返回个人中心</a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+<div class="myself-personal-background">
+    <div class="mySelf-div-person">
+        <div class="mySelf-headPortrait">
+            <img th:src="'/image/touxiang/'+ ${otherTouxiang}" id="h-avatar">
+
+        </div>
+
+        <div class="mySelf-div-person-basic">
+
+            <div>
+                <span class="mySelf-userName" th:if="${otherAccount} ne admin">[[ ${otherName} ]]</span>
+                <span class="mySelf-userName" style="color: #9d64ed" name="mySelf-userName" th:if="${otherAccount} eq admin">[[ ${otherName} ]]</span>
+            </div>
+            <div class="mySelf-div-person-basic-signtop">
+                <input name="selfSign" id="selfSign" th:value="${othersign}" type="text" placeholder="编辑个性签名" maxlength="60">
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+<div class="mySelf-background">
+
+    <div class="mySelf-div">
+        <div class="mySelf-div-litdiv" id="zhuye" style="background-color: #3b498d;border-radius: 0 0 10px 10px">
+            <a th:href="'/otherPeople?otherAccount='+${otherAccount}">
+                <span>主页</span>
+            </a>
+        </div>
+        <div class="mySelf-div-litdiv" id="shoucang" >
+            <a th:onclick="shoucang()">
+                <span>收藏</span>
+            </a>
+        </div>
+        <div class="mySelf-div-litdiv" id="music">
+            <a th:href="@{musicBox}">
+                <span>音乐盒</span>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="mySelf-div mySelf-divbox">
+    <!--    主页面col-1-->
+    <div class="col-1" id="col-1" >
+        <div style="width: 100%;height: 20px;margin-top: 20px">
+            <span style="font-size: 15px;font-weight: bold; color: lightgray">TA的视频</span>
+        </div>
+        <!--TA的视频-->
+        <div class="mySelf-myVideoDiv" th:name="myvideo">
+
+            <div class="mySelf-video-div" th:each="myshipinlist:${shipinlist}">
+                <video preload="metadata" controls="" x5-playsinline="" playsinline="" webkit-playsinline="" poster="">
+                    <source th:src="'../video/'+${myshipinlist.name}" type="video/mp4">
+                </video>
+                <div class="mySelf-video-div-div2">
+                    <a class="mySelf-video-a" th:href="'video/'+${myshipinlist.name}" ><span th:text="${myshipinlist.title}"></span></a>
+                </div>
+                <div class="mySelf-video-div-div2">
+                    <span th:text="'分类: ' + ${myshipinlist.tag}"></span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div style="width: 100%;height: 20px;margin-top: 20px">
+            <span style="font-size: 15px;font-weight: bold; color: lightgray;">留言板</span>
+        </div>
+
+        <div class="mySelf-myVideoDiv" th:name="leaveword">
+            <div class="mySelf-leaveword-div" th:each="myleaveword:${leaveword}">
+
+                <div class="mySelf-other-headPortrait">
+                    <img th:src="'/image/touxiang/'+ ${myleaveword.senderTouxaing}" id="h-avatar3">
+                    <a target="_top" th:href="'/otherPeople?otherAccount='+${myleaveword.sendaccount}" th:if="${otherAccount} ne ${myleaveword.sendaccount}" class="mySelf-other-headPortrait-cover">
+                        TA的主页
+                    </a>
+                    <a target="_top" th:href="@{mySelf}" th:if="${otherAccount} eq ${myleaveword.sendaccount} or ${session.userAccount} eq ${myleaveword.sendaccount}" class="mySelf-other-headPortrait-cover">
+                        我的主页
+                    </a>
+                </div>
+                <div class="mySelf-leaveword-div-namediv">
+                    <span class="mySelf-other-userName" > [[ ${myleaveword.senderName} ]]</span>
+                </div>
+
+                <div class="mySelf-leaveword-div-content">
+                    <span>[[ ${myleaveword.content} ]]</span>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="mySelf-leaveword-sendleaveword">
+            <div class="mySelf-leaveword-sendleaveword-litdiv"><span>说些什么</span></div>
+            <form th:action="'/submitLeaveWord'">
+                <input type="text" hidden name="senderAccount" th:value="${session.userAccount}"/>
+                <input type="text" hidden name="acceptAccount" th:value="${otherAccount}"></input>
+                <textarea name="leavewordmsg"  id="leavewordmsg" placeholder="发一条友善的留言"></textarea>
+                <button type="submit" class="mySelf-leaveword-sendleaveword-button">留言</button>
+            </form>
+        </div>
+
+    </div>
+
+
+
+    <!--    审核页面col-1-->
+    <div class="col-1" id="col-1-shenhe" style="display: none" >
+        <div style="width: 100%;height: 20px;margin-top: 20px">
+            <span style="font-size: 15px;font-weight: bold; color: lightgray">待审核</span>
+        </div>
+
+        <!--待审核-->
+        <div class="mySelf-myVideoDiv" th:name="shenhe">
+
+            <div style="height: 120px" class="mySelf-shenhevideo-div" th:each="allshshipinlist:${allshenheList}">
+                <div class="mySelf-shenhevideo-div-div2">
+                    <span th:text="'视频: '+${allshshipinlist.title}"></span>
+                </div>
+                <div class="mySelf-shenhevideo-div-div2">
+                    <span th:text="'作者: '+${allshshipinlist.author}"></span>
+                </div>
+                <div class="mySelf-shenhevideo-div-div2">
+                    <span th:text="'分类: '+${allshshipinlist.tag}"></span>
+                </div>
+                <div class="mySelf-shenhevideo-div-button2">
+                    <a th:href="'shenHeVideo/'+${allshshipinlist.vname}">查看视频</a>
+                </div>
+                <div class="mySelf-shenhevideo-div-button2pass">
+                    <input hidden type="text" id="videoId" th:value="${allshshipinlist.id}"></input>
+                    <a class="mySelf-shenhevideo-div-button2pass" href="javascript:passAudit();">通过审核</a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!--收藏页面-->
+    <div class="col-1" id="col-1-shoucang" style="display: none" >
+        <div style="width: 100%;height: 20px;margin-top: 20px">
+            <span style="font-size: 15px;font-weight: bold; color: lightgray">我的收藏</span>
+        </div>
+        <div class="mySelf-myVideoDiv" th:id="folder">
+            <div class="mySelf-myFolder" th:each="myfolder:${collectfolder}" th:if="${session.pd} eq true" th:fragment="myCollectRefresh">
+                <input type="hidden" id="saveAllFolder" th:value="${collectfolder}">
+                <a th:href="'javascript:openOtherFolder('+${myfolder.id}+',\''+${otherAccount}+'\')'" id="currentFolder">
+                    <img src="image/folder.png">
+                    <span>[[ ${myfolder.collectFolderName} ]]</span>
+                </a>
+            </div>
+            <!--            刷新部分  使用thymeleaf的fragment功能，刷新名为mycollectRefresh的组件-->
+
+            <div class="mySelf-myFolder" th:if="${session.pd} eq false" th:fragment="myCollectRefresh">
+                <a th:href="'javascript:exitOtherFolder(\''+${otherAccount}+'\')'" id="returnFolder" >
+<!--                    js函数中参数传递string类型要'引起来，使用转义字符\'-->
+                    <img src="image/folder.png">
+                    <span>...</span>
+                </a>
+            </div>
+
+            <div style="height: 20px;width: 100%;display: inline-block;border-top: 1px solid cornsilk;" th:fragment="myCollectRefresh"></div>
+            <div class="mySelf-video-div" th:each="myCollectlist:${collectList}" th:fragment="myCollectRefresh">
+                <!--回到上一级-->
+
+                <video preload="metadata" controls="" playsinline="" poster="">
+                    <source th:src="'../video/'+${myCollectlist.name}" type="video/mp4">
+                </video>
+                <div class="mySelf-video-div-div2">
+                    <a class="mySelf-video-a" th:href="'video/'+${myCollectlist.name}" ><span th:text="${myCollectlist.title}"></span></a>
+                </div>
+                <div class="mySelf-video-div-div2">
+                    <span th:text="'分类: ' + ${myCollectlist.tag}"></span>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+    <div class="col-2">
+
+    </div>
+</div>
+
+</body>
+</html>

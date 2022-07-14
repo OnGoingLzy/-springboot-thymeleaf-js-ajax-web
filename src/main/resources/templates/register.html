@@ -1,0 +1,32 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>蟹黄社区注册</title>
+  <link rel="stylesheet" th:href="@{css/font-awesome.css}"/> <!-- Font-Awesome-Icons-CSS -->
+  <link rel="stylesheet" th:href="@{css/login.css}" type="text/css" media="all"/> <!-- Style-CSS -->
+</head>
+<body class="background">
+<div class="header-w3l">
+  <h1>蟹黄社区注册</h1>
+</div>
+<div class="main-content-agile">
+  <form th:action="@{registerDianji}">
+    <input type="hidden" name="method" value="SaveRegister">
+    <div class="sub-main-w3">
+    <table border="1">
+      <p style="color: crimson" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+      <tr><td style="color: white">Account:</td>  <td><input type="text" name="raccount" size="26px"></td></tr>
+      <tr><td style="color: white">Password:</td>  <td><input type="text" name="rpassword"></td></tr>
+      <tr><td style="color: white">Name:</td>  <td><input type="text" name="rname"></td></tr>
+    </table>
+    <input type="submit" name="注册">
+    </div>
+<!--  隐藏信息，注册成功出现登录按钮  -->
+    <div class="sub-main-w3"  th:if="${not #strings.isEmpty(regsuccess)}">
+      <p style="color: greenyellow" th:text="${regsuccess}"></p>
+      <a th:href="@{login}"> <input type="button" value="toLogin" /> </a>
+    </div>
+  </form>
+</div>
+</body>
+</html>

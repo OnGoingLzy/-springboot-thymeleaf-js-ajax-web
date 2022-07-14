@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>蟹黄社区登录</title>
+</head>
+<body>
+<h1>蟹黄社区</h1>
+<!--如果msg为空则不显示-->
+<p style="color: crimson" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+<form method="login" th:action="@{/user/login}">
+	<input type="hidden" name="method" value="login">
+	Account:<input type="text" name="account"><br>
+	Password:<input type="password" name="password"><br>
+	<input type="submit" name="submit">
+	<a th:href="@{register}"> <input type="button" value="register" /> </a>
+<!--	<input type="button" value="register" th:onclick="register"> -->
+
+</form>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "cbs.imagesPath",
+      "type": "java.lang.String",
+      "description": "Description for cbs.imagesPath."
+  }
+] }

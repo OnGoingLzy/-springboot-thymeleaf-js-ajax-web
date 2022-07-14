@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>蟹黄视频</title>
+    <link rel="stylesheet" th:href="@{css/layui.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/mySelfCenter.css}">
+    <link rel="stylesheet" th:href="@{/css/uploadFile.css}">
+    <script src="/js/uploadVideo.js"></script>
+    <script src="/js/jquery.min.js"></script>
+<!--    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
+    <style>
+        .logo img {
+            width: 240px;
+            height: 46px;
+        }
+    </style>
+    <style type="text/css">
+        progress {
+            background-color: #56BE64;
+        }
+        progress::-webkit-progress-bar {
+            background: #ccc;
+        }
+        progress::-webkit-progress-value {
+            background: #56BE64;
+        }
+        percentage{
+            position: fixed;
+            left: 160px;
+        }
+    </style>
+</head>
+<body class="mySelf-background">
+
+<div class="layui-header header header-index">
+    <div class="layui-main">
+        <a class="logo" href="/index">
+            <img src="/picture/LOGO2.png" alt="">
+        </a>
+        <ul class="layui-nav" height="50px">
+            <div class="mySelf-headPortrait2">
+                <img th:src="'/image/touxiang/'+ ${session.userTouxiang}" id="h-avatar2">
+                <a target="_top" th:href="@{mySelf}" class="mySelf-headPortrait-cover2">
+                    我的主页
+                </a>
+            </div>
+        </ul>
+
+    </div>
+
+</div>
+
+<div class="upload-container">
+    <div class="upload-menu">
+        <div class="upload-menu-title">
+            <h2>创作中心</h2>
+        </div>
+        <ul class="upload-menu-ul">
+            <li>
+                <div class="upload-menu-ul-div" style="background-color: #3b498d"><span>上传视频</span></div>
+            </li>
+            <li>
+                <div class="upload-menu-ul-div"><span>我的视频</span></div>
+            </li>
+        </ul>
+    </div>
+    <div class="upload-rightdiv">
+
+        <div class="upload-title-container1" th:height="100px">
+            <div class="upload-title">
+                <span>封面</span>
+            </div>
+            <div class="upload-surfaceImage">
+
+            </div>
+        </div>
+        <div class="upload-title-container2">
+            <div class="upload-title">
+                <span>标题</span>
+            </div>
+            <input class="upload-name-text" type="text" id="title2">
+        </div>
+        <div class="upload-title-container3">
+            <div class="upload-title">
+                <span>分类</span>
+            </div>
+                <select id="selectTag"  name="selectTag" class="upload-selectTag">
+                    <option th:each="tag:${tagall}" value="${tag}">[[ ${tag} ]]</option>
+                </select>
+        </div>
+
+        <div class="upload-buttonlistdiv">
+            <div class="upload-title">
+                <span>选择视频</span>
+            </div>
+            <div class="upload-showFieInfo" >
+                <p id="upfileName">文件名:</p><br/>
+                <p id="upfileSize">文件大小:</p><br/>
+                <p id="upfileType">文件类型:</p><br/>
+                <p name="msg1" id="msg1"></p><br/><p name="msg2" id="msg2"></p>
+            </div>
+
+                <div class="upload-choicevideo">
+                    <form id="FileuploadForm" method="POST" action="/uploadVideo" enctype="multipart/form-data">
+                    <input class="files" type="file" id="uploadFile" name="uploadFile" accept=".mp4,.flv,.avi,.wmv,.mov,.webm,.mpeg4,.ts,.mpg,.rm,.rmvb,.mkv,.m4v"/><div id="msg"></div>
+                    </form>
+                        <span id="selectFile">选择视频</span>
+                </div>
+        </div>
+        <div class="upload-bar">
+            <!--进度条部分(默认隐藏)-->
+            <div style="display: none;" class="progress-body">
+                <div>
+                    <span style="color: white;float: left; width: 100px; display: inline-block; text-align: right">上传进度：</span>
+                    <progress></progress><percentage>0%</percentage>
+                </div>
+                <div>
+                    <span style="color: white;float: left; width: 100px; display: inline-block; text-align: right">上传速度：</span>
+                    <span style=" margin-bottom: 10px; margin-left: 30px; width: 300px;" class="progress-speed">0 M/S, 0/0M</span>
+                </div>
+                <div>
+                    <span style="color: white; float: left; width: 100px; display: inline-block; text-align: right">上传状态：</span>
+                    <span style="margin-bottom: 10px; margin-left: 30px; width: 300px;" class="progress-info">请选择文件并点击上传文件按钮</span>
+                </div>
+            </div>
+        </div>
+        <div class="upload-buttonlistdiv-p">
+            <div class="upload-title"></div>
+                <a style="margin-left: 5px;pointer-events:none;" id="upload" onclick="tougaoMessage()">投稿</a>
+                <a href="javascript:;" id="cancelUpload">取消</a>
+        </div>
+    </div>
+</div>
+<script>
+    $("#uploadFile").on("change", function () {
+        //$(this)[0] 等价于 $(this).get(0)，将 JQuery 对象转为 DOM 对象，files 为其属性，得到的是一个文件对象数组
+        var files = $(this)[0].files;
+        if(files.length>0){//未选中文件时，长度为0
+            var file = files[0];//因为是单文件上传，所以只有一个文件（File）对象
+            // console.log(file);//下面所有的属性都可以从此对象的输出得到
+            // console.log("文件名称：" + file.name + ",文件大小：" + file.size + "字节,文件类型："
+            //     + file.type + ",上次修改时间：" + file.lastModifiedDate);
+            document.getElementById("upfileName").innerHTML="文件名:"+file.name;
+            var fileSize = file.size/1024/1024;
+            fileSize = fileSize.toFixed(3);
+            document.getElementById("upfileSize").innerHTML="文件名:"+fileSize+"MB";
+            document.getElementById("upfileType").innerHTML="文件名:"+file.type;
+            clickUpload();
+        }
+    });
+
+</script>
+</body>
+
+</html>

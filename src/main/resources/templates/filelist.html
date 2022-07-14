@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>视频列表</title>
+    <link rel="stylesheet" th:href="@{css/font-awesome.css}"/> <!-- Font-Awesome-Icons-CSS -->
+    <link rel="stylesheet" th:href="@{css/login.css}" type="text/css" media="all"/> <!-- Style-CSS -->
+</head>
+<body class="background">
+视频列表
+<div>
+    <ul>
+        <li th:each="Shipin:${Shipins}">
+            <p style="color: cornsilk">ID:<span th:text="${Shipin.id}"></span></p>
+            <p style="color: darkgray">视频url======<span th:text="${Shipin.url}"></span></p>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
